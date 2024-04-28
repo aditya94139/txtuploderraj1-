@@ -10,8 +10,8 @@ RUN apt-get update -y && apt-get upgrade -y \
 COPY . /app/
 WORKDIR /app/
 
-# Install Python dependencies
-RUN pip3 install --no-cache-dir --upgrade --requirement Installer -vvv
+# Install Python dependencies with --break-system-packages flag
+RUN pip3 install --no-cache-dir --upgrade --requirement Installer -vvv --break-system-packages
 
 # Start the application
 CMD python3 modules/main.py
