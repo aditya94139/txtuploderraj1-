@@ -5,12 +5,13 @@ FROM python:3.12-slim
 ENV VIRTUAL_ENV=/opt/venv
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
-# Install build dependencies
+# Install build dependencies and ffmpeg
 RUN apt-get update && apt-get install -y \
     gcc \
     libc-dev \
     libffi-dev \
     musl-dev \
+    ffmpeg \ 
     && rm -rf /var/lib/apt/lists/*
 
 # Create a virtual environment
@@ -24,9 +25,6 @@ COPY . .
 
 # Activate the virtual environment
 RUN . $VIRTUAL_ENV/bin/activate
-
-# Install TgCrypto package
-RUN pip install --no-cache-dir --upgrade TgCrypto
 
 # Install Python dependencies listed in the Installer file
 RUN pip install --no-cache-dir --upgrade --requirement Installer
