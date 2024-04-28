@@ -1,21 +1,26 @@
+# Use the latest Ubuntu base image
 FROM ubuntu:latest
 
-# Update and install dependencies
-RUN apt-get update -y && apt-get upgrade -y \
-    && apt-get install -y --no-install-recommends gcc libffi-dev musl-dev ffmpeg aria2 python3-pip python3-venv \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+# Update package lists and install necessary dependencies
+RUN apt-get update -y && \
+    apt-get upgrade -y && \
+    apt-get install -y --no-install-recommends \
+    gcc libffi-dev musl-dev ffmpeg aria2 python3-pip python3-venv && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Copy application code into the container
 COPY . /app/
 WORKDIR /app/
 
-# Create and activate virtual environment
-RUN python3 -m venv venv
-RUN . venv/bin/activate
+# Create a virtual environment and activate it
+RUN python3 -m venv my_env && \
+    . my_env/bin/activate && \
+    pip install --no-cache-dir --upgrade pip
 
-# Install Python dependencies
-RUN pip3 install --no-cache-dir --upgrade --requirement Installer
+# Install Python dependencies listed in the Installer file
+RUN pip install --no-cache-dir --upgrade --requirement Installer
 
-# Start the application
+# Specify the default command to run
 CMD python3 modules/main.py
+
