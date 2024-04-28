@@ -17,6 +17,9 @@ COPY . .
 # Activate the virtual environment
 RUN . $VIRTUAL_ENV/bin/activate
 
+# Install TgCrypto package
+RUN pip install --no-cache-dir --upgrade TgCrypto
+
 # Install Python dependencies listed in the Installer file
 RUN pip install --no-cache-dir --upgrade --requirement Installer
 
