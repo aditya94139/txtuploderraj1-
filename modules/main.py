@@ -174,8 +174,8 @@ async def account_login(bot: Client, m: Message):
 
             try:  
                 
-                cc = f'**Vid_id  »** {str(count).zfill(3)}\n\n**Title  »** {name1} {res} .mkv\n\n**Batch »** {raw_text0}\n\n**Download by »** {raw_text3}\n\n'
-                cc1 = f'**Vid_id  »** {str(count).zfill(3)}\n\n**Title »** {name1} .pdf \n\n**Batch »** {raw_text0}\n\n**Download by »** {raw_text3}\n\n'
+                cc = f'**[ 🎬 ] 𝙑𝙞𝙙_𝙄𝘿 ➤** {str(count).zfill(3)}\n\n**Title  »** {name1} {res} .mkv\n\n**Batch »** {raw_text0}\n\n**𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿𝙀𝘿 𝘽𝙔 ➤** {raw_text3}\n\n'
+                cc1 = f'**[ 📕 ] 𝙋𝙙𝙛_𝙄𝘿 ➤** {str(count).zfill(3)}\n\n**Title »** {name1} .pdf \n\n**Batch »** {raw_text0}\n\n**𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿𝙀𝘿 𝘽𝙔 ➤** {raw_text3}\n\n'
                 if "drive" in url:
                     try:
                         ka = await helper.download(url, name)
@@ -201,7 +201,7 @@ async def account_login(bot: Client, m: Message):
                         time.sleep(e.x)
                         continue
                 else:
-                    Show = f"**Downloading:-**\n\n**Name :-** `{name}\nQuality - {raw_text2}`\n\n**Url :-** `{url}`\n"
+                    Show = f"**⬇️𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿𝙄𝙉𝙂⬇️**\n\n**📝Name »** `{name}\n❄Quality » {raw_text2}`\n\n**🔗URL » {url}"
                     prog = await m.reply_text(Show)
                     res_file = await helper.download_video(url, cmd, name)
                     filename = res_file
@@ -218,7 +218,7 @@ async def account_login(bot: Client, m: Message):
 
     except Exception as e:
         await m.reply_text(e)
-    await m.reply_text("✅ D O N E ✅")
+    await m.reply_text("Done ✅")
 
 
 bot.run()
